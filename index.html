@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engomadoria Penafiel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            capri:    '#02BEFD',
+            'maya1':  '#56CAFB',
+            'maya2':  '#76D3FE',
+            wizard:   '#A4DFFD',
+            bolt:     '#00B0FC',
+            cerulean: '#019EF3',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+    html { scroll-behavior: smooth; }
+    .nav-active { color: #019EF3; font-weight: 700; }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+  <!-- ─── Navigation ─────────────────────────────────────────────────────── -->
+  <nav class="fixed top-0 w-full z-50 bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+
+        <!-- Logo -->
+        <button onclick="showPage('home')" class="flex items-center gap-2">
+          <span class="text-2xl">👔</span>
+          <div class="leading-tight text-left">
+            <span class="block text-lg font-extrabold text-cerulean">Engomadoria</span>
+            <span class="block text-xs text-gray-400 -mt-1">Penafiel</span>
+          </div>
+        </button>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-1">
+          <button onclick="showPage('home')"     id="nav-home"     class="nav-btn px-4 py-2 rounded-lg text-gray-600 hover:text-cerulean font-medium transition-colors text-sm">Início</button>
+          <button onclick="showPage('about')"    id="nav-about"    class="nav-btn px-4 py-2 rounded-lg text-gray-600 hover:text-cerulean font-medium transition-colors text-sm">Sobre Nós</button>
+          <button onclick="showPage('services')" id="nav-services" class="nav-btn px-4 py-2 rounded-lg text-gray-600 hover:text-cerulean font-medium transition-colors text-sm">Serviços</button>
+          <button onclick="showPage('contact')"  id="nav-contact"  class="nav-btn px-4 py-2 rounded-lg text-gray-600 hover:text-cerulean font-medium transition-colors text-sm">Contacto</button>
+          <button onclick="showPage('gallery')"  id="nav-gallery"  class="nav-btn px-4 py-2 rounded-lg text-gray-600 hover:text-cerulean font-medium transition-colors text-sm">Galeria</button>
+          <button onclick="showPage('booking')"  id="nav-booking"  class="ml-2 px-5 py-2 rounded-full text-white text-sm font-bold transition-all hover:scale-105 hover:shadow-lg" style="background:#019EF3">Reservar</button>
+        </div>
+
+        <!-- Mobile burger -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-1">
+      <button onclick="showPage('home');    closeMobileMenu()" class="block w-full text-left px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Início</button>
+      <button onclick="showPage('about');   closeMobileMenu()" class="block w-full text-left px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Sobre Nós</button>
+      <button onclick="showPage('services');closeMobileMenu()" class="block w-full text-left px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Serviços</button>
+      <button onclick="showPage('contact'); closeMobileMenu()" class="block w-full text-left px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Contacto</button>
+      <button onclick="showPage('gallery'); closeMobileMenu()" class="block w-full text-left px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Galeria</button>
+      <button onclick="showPage('booking'); closeMobileMenu()" class="block w-full text-left px-3 py-2 rounded-lg text-cerulean font-bold">Reservar</button>
+    </div>
+  </nav>
+
+  <div class="pt-16">
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         HOME PAGE
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <div id="page-home" class="page active">
+
+      <!-- Hero -->
+      <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden"
+               style="background: linear-gradient(135deg, #019EF3 0%, #02BEFD 45%, #56CAFB 75%, #76D3FE 100%);">
+        <!-- subtle grid overlay -->
+        <div class="absolute inset-0 opacity-10"
+             style="background-image: repeating-linear-gradient(45deg,white 0,white 1px,transparent 0,transparent 50%);background-size:22px 22px;"></div>
+
+        <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
+          <p class="text-xs font-bold tracking-widest uppercase mb-5 opacity-80">Engomadoria Profissional · Penafiel</p>
+          <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-sm">
+            A Sua Roupa<br>
+            <span class="text-white">Sempre Impecável</span>
+          </h1>
+          <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
+            Engomadoria profissional com recolha e entrega ao domicílio.
+            Qualidade e comodidade ao alcance da sua mão.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onclick="scrollToPlans()"
+                    class="bg-white text-cerulean font-bold px-9 py-4 rounded-full text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+              Obter Orçamento
+            </button>
+            <button onclick="showPage('booking')"
+                    class="border-2 border-white text-white font-bold px-9 py-4 rounded-full text-lg hover:bg-white hover:text-cerulean transition-all">
+              Reservar Agora
+            </button>
+          </div>
+        </div>
+
+        <!-- Wave divider -->
+        <div class="absolute bottom-0 left-0 w-full leading-none">
+          <svg viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,56L60,50C120,44,240,32,360,32C480,32,600,44,720,50C840,56,960,56,1080,50C1200,44,1320,32,1380,26L1440,20L1440,72L0,72Z" fill="#f9fafb"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Services overview -->
+      <section class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+          <h2 class="text-4xl font-extrabold text-gray-800 mb-3">Os Nossos Serviços</h2>
+          <p class="text-gray-500 text-lg max-w-lg mx-auto">Tudo o que precisa para ter a sua roupa sempre tratada, com qualidade e comodidade.</p>
+          <div class="w-16 h-1 rounded-full mx-auto mt-5" style="background:#019EF3"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Engomadoria -->
+          <div class="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all border-t-4 border-cerulean">
+            <div class="text-5xl mb-5">👔</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Engomadoria</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Serviços profissionais de engomadoria para roupas, roupa de cama, toalhas e muito mais.</p>
+          </div>
+          <!-- Recolha e Entrega -->
+          <div class="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all border-t-4 border-bolt">
+            <div class="text-5xl mb-5">🚗</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Recolha e Entrega</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Serviço conveniente de recolha e entrega ao domicílio para as suas necessidades de engomadoria.</p>
+          </div>
+          <!-- Calendarização -->
+          <div class="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all border-t-4 border-capri">
+            <div class="text-5xl mb-5">📅</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Calendarização</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Agendamento flexível adaptado ao seu estilo de vida, incluindo serviço no próprio dia ou no seguinte.</p>
+          </div>
+          <!-- Preços -->
+          <div class="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all border-t-4 border-maya1">
+            <div class="text-5xl mb-5">💶</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Preços Transparentes</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Preços competitivos e transparentes para todos os serviços, sem surpresas.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Plans section (CTA target) ── -->
+      <section id="plans-section" class="py-20 px-4" style="background:linear-gradient(180deg,#f0f9ff 0%,#e0f2fe 100%);">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-14">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-3">Escolha o Seu Plano</h2>
+            <p class="text-gray-500 text-lg max-w-lg mx-auto">Selecione a opção que melhor se adequa às suas necessidades e estilo de vida.</p>
+            <div class="w-16 h-1 rounded-full mx-auto mt-5" style="background:#019EF3"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+            <!-- Standard -->
+            <div class="bg-white rounded-2xl shadow-md p-8 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all border border-gray-100">
+              <div class="text-4xl text-center mb-4">🏠</div>
+              <h3 class="text-2xl font-extrabold text-gray-800 text-center mb-1">Standard</h3>
+              <p class="text-cerulean font-semibold text-center mb-6 text-sm">Deixa e Relaxa</p>
+              <ul class="space-y-3 mb-8 flex-1 text-sm text-gray-600">
+                <li class="flex items-start gap-2"><span class="text-cerulean font-bold mt-0.5">✓</span> Engomadoria profissional</li>
+                <li class="flex items-start gap-2"><span class="text-cerulean font-bold mt-0.5">✓</span> Prazo de 24–48h</li>
+                <li class="flex items-start gap-2"><span class="text-cerulean font-bold mt-0.5">✓</span> Pagamento por peça ou por kg</li>
+                <li class="flex items-start gap-2"><span class="text-cerulean font-bold mt-0.5">✓</span> Opção mais acessível</li>
+              </ul>
+              <button onclick="showPage('booking')"
+                      class="w-full text-white font-bold py-3 rounded-xl transition-all hover:opacity-90 hover:shadow-md"
+                      style="background:#019EF3">Escolher</button>
+            </div>
+
+            <!-- Conveniência -->
+            <div class="bg-white rounded-2xl shadow-md p-8 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all border border-gray-100">
+              <div class="text-4xl text-center mb-4">🚚</div>
+              <h3 class="text-2xl font-extrabold text-gray-800 text-center mb-1">Conveniência</h3>
+              <p class="font-semibold text-center mb-6 text-sm" style="color:#00B0FC">Recolhemos e Entregamos</p>
+              <ul class="space-y-3 mb-8 flex-1 text-sm text-gray-600">
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5" style="color:#00B0FC">✓</span> Serviço porta-a-porta</li>
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5" style="color:#00B0FC">✓</span> Recolha agendada</li>
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5" style="color:#00B0FC">✓</span> Entrega rápida</li>
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5" style="color:#00B0FC">✓</span> Sem deslocações desnecessárias</li>
+              </ul>
+              <button onclick="showPage('booking')"
+                      class="w-full text-white font-bold py-3 rounded-xl transition-all hover:opacity-90 hover:shadow-md"
+                      style="background:#00B0FC">Escolher</button>
+            </div>
+
+            <!-- Subscrição (highlighted) -->
+            <div class="rounded-2xl shadow-xl p-8 flex flex-col relative hover:shadow-2xl hover:-translate-y-2 transition-all text-white"
+                 style="background:linear-gradient(160deg,#019EF3,#00B0FC);">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 text-xs font-extrabold px-4 py-1 rounded-full shadow">
+                MELHOR VALOR
+              </div>
+              <div class="text-4xl text-center mb-4">⭐</div>
+              <h3 class="text-2xl font-extrabold text-center mb-1">Subscrição</h3>
+              <p class="font-semibold text-center mb-6 text-sm text-white/80">Semanal · Quinzenal · Mensal</p>
+              <ul class="space-y-3 mb-8 flex-1 text-sm text-white/90">
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5">✓</span> Automático. Fácil.</li>
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5">✓</span> Recolha recorrente</li>
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5">✓</span> Serviço prioritário</li>
+                <li class="flex items-start gap-2"><span class="font-bold mt-0.5">✓</span> Preços mais baixos</li>
+              </ul>
+              <button onclick="showPage('booking')"
+                      class="w-full bg-white text-cerulean font-bold py-3 rounded-xl hover:bg-gray-50 transition-all hover:shadow-md">
+                Escolher
+              </button>
+            </div>
+
+            <!-- Expresso -->
+            <div class="bg-white rounded-2xl shadow-md p-8 flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all border border-gray-100">
+              <div class="text-4xl text-center mb-4">⚡</div>
+              <h3 class="text-2xl font-extrabold text-gray-800 text-center mb-1">Expresso</h3>
+              <p class="text-orange-500 font-semibold text-center mb-6 text-sm">Precisa com Urgência?</p>
+              <ul class="space-y-3 mb-8 flex-1 text-sm text-gray-600">
+                <li class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">✓</span> Engomadoria no próprio dia</li>
+                <li class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">✓</span> Serviço expresso disponível</li>
+                <li class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">✓</span> Agendamento prioritário</li>
+                <li class="flex items-start gap-2"><span class="text-orange-500 font-bold mt-0.5">✓</span> Adicional de 30–50%</li>
+              </ul>
+              <button onclick="showPage('booking')"
+                      class="w-full bg-orange-500 text-white font-bold py-3 rounded-xl hover:bg-orange-600 transition-all hover:shadow-md">
+                Escolher
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Why us -->
+      <section class="py-20 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-14">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-3">Porquê Escolher-nos?</h2>
+            <div class="w-16 h-1 rounded-full mx-auto mt-5" style="background:#019EF3"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div>
+              <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm" style="background:#A4DFFD">🏆</div>
+              <h3 class="text-xl font-bold mb-2">Experiência</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Anos de experiência em engomadoria profissional, com atenção ao detalhe em cada peça.</p>
+            </div>
+            <div>
+              <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm" style="background:#A4DFFD">🤝</div>
+              <h3 class="text-xl font-bold mb-2">Confiança</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Clientes satisfeitos em toda a região de Penafiel que confiam em nós há anos.</p>
+            </div>
+            <div>
+              <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl shadow-sm" style="background:#A4DFFD">⏱️</div>
+              <h3 class="text-xl font-bold mb-2">Pontualidade</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Cumprimos sempre os prazos acordados. A sua roupa pronta quando precisa.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA banner -->
+      <section class="py-20 px-4 text-center text-white" style="background:linear-gradient(135deg,#019EF3,#02BEFD);">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Pronto para começar?</h2>
+        <p class="text-lg mb-8 opacity-90">Entre em contacto connosco hoje mesmo e obtenha um orçamento gratuito.</p>
+        <button onclick="showPage('booking')"
+                class="bg-white text-cerulean font-bold px-10 py-4 rounded-full text-lg hover:shadow-xl hover:scale-105 transition-all">
+          Reservar Agora
+        </button>
+      </section>
+
+    </div><!-- /page-home -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         ABOUT PAGE
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <div id="page-about" class="page">
+
+      <div class="py-24 text-center text-white" style="background:linear-gradient(135deg,#019EF3,#02BEFD);">
+        <h1 class="text-5xl font-extrabold mb-3">Sobre Nós</h1>
+        <p class="text-xl opacity-80">Conheça a nossa história</p>
+      </div>
+
+      <section class="py-20 px-4 max-w-5xl mx-auto">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mb-20">
+          <img src="https://placehold.co/560x420/76D3FE/ffffff?text=A+Nossa+Hist%C3%B3ria"
+               alt="A Nossa História" class="rounded-2xl shadow-lg w-full object-cover">
+          <div>
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-6">A Nossa História</h2>
+            <p class="text-gray-500 leading-relaxed mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p class="text-gray-500 leading-relaxed mb-4">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p class="text-gray-500 leading-relaxed">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+          <div class="order-2 md:order-1">
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-6">A Nossa Missão</h2>
+            <p class="text-gray-500 leading-relaxed mb-4">
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </p>
+            <p class="text-gray-500 leading-relaxed">
+              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+            </p>
+          </div>
+          <img src="https://placehold.co/560x420/A4DFFD/019EF3?text=A+Nossa+Miss%C3%A3o"
+               alt="A Nossa Missão" class="rounded-2xl shadow-lg w-full object-cover order-1 md:order-2">
+        </div>
+
+      </section>
+    </div><!-- /page-about -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         SERVICES PAGE
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <div id="page-services" class="page">
+
+      <div class="py-24 text-center text-white" style="background:linear-gradient(135deg,#019EF3,#02BEFD);">
+        <h1 class="text-5xl font-extrabold mb-3">Serviços</h1>
+        <p class="text-xl opacity-80">Tudo o que oferecemos para si</p>
+      </div>
+
+      <section class="py-20 px-4 max-w-5xl mx-auto space-y-10">
+
+        <!-- Engomadoria -->
+        <div class="bg-white rounded-2xl shadow-md p-8 flex flex-col md:flex-row gap-8 items-start hover:shadow-lg transition-shadow">
+          <div class="text-6xl w-20 text-center flex-shrink-0 pt-1">👔</div>
+          <div>
+            <h2 class="text-2xl font-extrabold text-gray-800 mb-3">Engomadoria Profissional</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-gray-600">
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Camisas</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Calças</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Lençóis</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Toalhas</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Vestidos</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Fatos</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> Jaquetas</span>
+              <span class="flex items-center gap-1"><span class="text-cerulean">✓</span> E muito mais</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recolha e Entrega -->
+        <div class="bg-white rounded-2xl shadow-md p-8 flex flex-col md:flex-row gap-8 items-start hover:shadow-lg transition-shadow">
+          <div class="text-6xl w-20 text-center flex-shrink-0 pt-1">🚗</div>
+          <div>
+            <h2 class="text-2xl font-extrabold text-gray-800 mb-3">Recolha e Entrega ao Domicílio</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat.
+            </p>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore.
+            </p>
+          </div>
+        </div>
+
+        <!-- Calendarização -->
+        <div class="bg-white rounded-2xl shadow-md p-8 flex flex-col md:flex-row gap-8 items-start hover:shadow-lg transition-shadow">
+          <div class="text-6xl w-20 text-center flex-shrink-0 pt-1">📅</div>
+          <div>
+            <h2 class="text-2xl font-extrabold text-gray-800 mb-3">Calendarização Flexível</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-5">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem.
+            </p>
+            <div class="flex gap-3 flex-wrap text-sm font-semibold">
+              <span class="px-4 py-2 rounded-full text-cerulean" style="background:#A4DFFD">Serviço Normal: 24–48h</span>
+              <span class="px-4 py-2 rounded-full text-white" style="background:#019EF3">Expresso: Mesmo Dia (+30–50%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing table -->
+        <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow">
+          <h2 class="text-2xl font-extrabold text-gray-800 mb-3 text-center">Tabela de Preços</h2>
+          <p class="text-gray-400 text-sm text-center mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Preços indicativos — contacte-nos para orçamento personalizado.</p>
+          <div class="overflow-x-auto rounded-xl">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="text-white" style="background:#019EF3">
+                  <th class="px-6 py-3 rounded-tl-xl">Serviço</th>
+                  <th class="px-6 py-3">Unidade</th>
+                  <th class="px-6 py-3 rounded-tr-xl">Preço</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr class="hover:bg-gray-50"><td class="px-6 py-4 text-gray-700">Camisa / Blusa</td><td class="px-6 py-4 text-gray-400">Por peça</td><td class="px-6 py-4 font-semibold text-cerulean">A consultar</td></tr>
+                <tr class="hover:bg-gray-50"><td class="px-6 py-4 text-gray-700">Calças / Saia</td><td class="px-6 py-4 text-gray-400">Por peça</td><td class="px-6 py-4 font-semibold text-cerulean">A consultar</td></tr>
+                <tr class="hover:bg-gray-50"><td class="px-6 py-4 text-gray-700">Roupa de Cama</td><td class="px-6 py-4 text-gray-400">Por kg</td><td class="px-6 py-4 font-semibold text-cerulean">A consultar</td></tr>
+                <tr class="hover:bg-gray-50"><td class="px-6 py-4 text-gray-700">Recolha e Entrega</td><td class="px-6 py-4 text-gray-400">Por viagem</td><td class="px-6 py-4 font-semibold text-cerulean">A consultar</td></tr>
+                <tr class="hover:bg-gray-50"><td class="px-6 py-4 text-gray-700">Serviço Expresso</td><td class="px-6 py-4 text-gray-400">Adicional</td><td class="px-6 py-4 font-semibold text-orange-500">+30–50%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+    </div><!-- /page-services -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         CONTACT PAGE
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <div id="page-contact" class="page">
+
+      <div class="py-24 text-center text-white" style="background:linear-gradient(135deg,#019EF3,#02BEFD);">
+        <h1 class="text-5xl font-extrabold mb-3">Contacto</h1>
+        <p class="text-xl opacity-80">Estamos aqui para ajudar</p>
+      </div>
+
+      <section class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-14">
+
+          <!-- Info -->
+          <div>
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-10">Fale Connosco</h2>
+            <div class="space-y-5">
+              <div class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <span class="text-3xl">📞</span>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-0.5">Telefone</p>
+                  <p class="text-cerulean font-bold text-lg">+351 XXX XXX XXX</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <span class="text-3xl">💬</span>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-0.5">WhatsApp</p>
+                  <p class="text-green-500 font-bold text-lg">+351 XXX XXX XXX</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <span class="text-3xl">📧</span>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-0.5">Email</p>
+                  <p class="text-cerulean font-bold text-lg">contacto@engomadoria.pt</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <span class="text-3xl">📍</span>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-0.5">Localização</p>
+                  <p class="text-gray-700 font-bold text-lg">Penafiel, Portugal</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div>
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-10">Como Chegar</h2>
+            <img src="https://placehold.co/640x420/A4DFFD/019EF3?text=Mapa+de+Penafiel"
+                 alt="Mapa de Penafiel" class="w-full rounded-2xl shadow-lg object-cover">
+            <p class="text-gray-400 text-xs text-center mt-3">* Mapa interativo a ser integrado brevemente</p>
+          </div>
+
+        </div>
+      </section>
+    </div><!-- /page-contact -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         GALLERY & TESTIMONIALS PAGE
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <div id="page-gallery" class="page">
+
+      <div class="py-24 text-center text-white" style="background:linear-gradient(135deg,#019EF3,#02BEFD);">
+        <h1 class="text-5xl font-extrabold mb-3">Galeria & Testemunhos</h1>
+        <p class="text-xl opacity-80">O nosso trabalho e o que dizem os clientes</p>
+      </div>
+
+      <!-- Gallery grid -->
+      <section class="py-16 px-4 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-gray-800 mb-10 text-center">Galeria de Trabalhos</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <img src="https://placehold.co/320x320/56CAFB/ffffff?text=Foto+1" alt="Foto 1" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/76D3FE/019EF3?text=Foto+2" alt="Foto 2" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/A4DFFD/019EF3?text=Foto+3" alt="Foto 3" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/02BEFD/ffffff?text=Foto+4" alt="Foto 4" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/00B0FC/ffffff?text=Foto+5" alt="Foto 5" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/019EF3/ffffff?text=Foto+6" alt="Foto 6" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/56CAFB/019EF3?text=Foto+7" alt="Foto 7" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+          <img src="https://placehold.co/320x320/76D3FE/ffffff?text=Foto+8" alt="Foto 8" class="rounded-xl w-full aspect-square object-cover hover:opacity-90 hover:scale-105 transition-all cursor-pointer shadow-md">
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="py-16 px-4" style="background:#f0f9ff">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-extrabold text-gray-800 mb-12 text-center">O Que Dizem os Nossos Clientes</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow">
+              <div class="text-yellow-400 text-xl mb-4">★★★★★</div>
+              <p class="text-gray-500 italic text-sm leading-relaxed mb-6">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Serviço fantástico!"
+              </p>
+              <div class="flex items-center gap-3">
+                <img src="https://placehold.co/50x50/A4DFFD/019EF3?text=M" alt="Cliente" class="rounded-full w-12 h-12">
+                <div>
+                  <p class="font-bold text-gray-800 text-sm">Maria S.</p>
+                  <p class="text-gray-400 text-xs">Penafiel</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow">
+              <div class="text-yellow-400 text-xl mb-4">★★★★★</div>
+              <p class="text-gray-500 italic text-sm leading-relaxed mb-6">
+                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Recomendo vivamente!"
+              </p>
+              <div class="flex items-center gap-3">
+                <img src="https://placehold.co/50x50/76D3FE/019EF3?text=J" alt="Cliente" class="rounded-full w-12 h-12">
+                <div>
+                  <p class="font-bold text-gray-800 text-sm">João F.</p>
+                  <p class="text-gray-400 text-xs">Penafiel</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-8 hover:shadow-lg transition-shadow">
+              <div class="text-yellow-400 text-xl mb-4">★★★★★</div>
+              <p class="text-gray-500 italic text-sm leading-relaxed mb-6">
+                "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excelente qualidade!"
+              </p>
+              <div class="flex items-center gap-3">
+                <img src="https://placehold.co/50x50/56CAFB/ffffff?text=A" alt="Cliente" class="rounded-full w-12 h-12">
+                <div>
+                  <p class="font-bold text-gray-800 text-sm">Ana P.</p>
+                  <p class="text-gray-400 text-xs">Penafiel</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /page-gallery -->
+
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         BOOKING / QUOTE PAGE
+    ══════════════════════════════════════════════════════════════════════════ -->
+    <div id="page-booking" class="page">
+
+      <div class="py-24 text-center text-white" style="background:linear-gradient(135deg,#019EF3,#02BEFD);">
+        <h1 class="text-5xl font-extrabold mb-3">Reserva / Orçamento</h1>
+        <p class="text-xl opacity-80">Solicite o seu orçamento gratuito</p>
+      </div>
+
+      <section class="py-20 px-4 max-w-2xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <h2 class="text-2xl font-extrabold text-gray-800 mb-1">Preencha o Formulário</h2>
+          <p class="text-gray-400 text-sm mb-8">Entraremos em contacto consigo no prazo de 24 horas.</p>
+
+          <form id="booking-form" class="space-y-5" onsubmit="handleFormSubmit(event)">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Nome Completo *</label>
+                <input type="text" required placeholder="O seu nome"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all"
+                       style="--tw-ring-color:#02BEFD" onfocus="this.style.borderColor='#02BEFD'" onblur="this.style.borderColor='#e5e7eb'">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Telefone *</label>
+                <input type="tel" required placeholder="+351 XXX XXX XXX"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all"
+                       onfocus="this.style.borderColor='#02BEFD'" onblur="this.style.borderColor='#e5e7eb'">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
+              <input type="email" placeholder="o.seu@email.com"
+                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all"
+                     onfocus="this.style.borderColor='#02BEFD'" onblur="this.style.borderColor='#e5e7eb'">
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1.5">Tipo de Serviço *</label>
+              <select required
+                      class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 focus:outline-none transition-all appearance-none bg-white"
+                      onfocus="this.style.borderColor='#02BEFD'" onblur="this.style.borderColor='#e5e7eb'">
+                <option value="">Selecione um serviço…</option>
+                <option>Standard — Deixa e Relaxa</option>
+                <option>Conveniência — Recolha e Entrega</option>
+                <option>Subscrição — Semanal / Quinzenal / Mensal</option>
+                <option>Expresso — Mesmo Dia</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1.5">Morada (se recolha / entrega)</label>
+              <input type="text" placeholder="Rua, número, cidade"
+                     class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all"
+                     onfocus="this.style.borderColor='#02BEFD'" onblur="this.style.borderColor='#e5e7eb'">
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1.5">Mensagem / Detalhes Adicionais</label>
+              <textarea rows="4" placeholder="Descreva o que precisa…"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-all resize-none"
+                        onfocus="this.style.borderColor='#02BEFD'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+            </div>
+
+            <button type="submit"
+                    class="w-full text-white font-bold py-4 rounded-xl text-base hover:opacity-90 hover:shadow-lg hover:scale-[1.01] transition-all"
+                    style="background:linear-gradient(135deg,#019EF3,#02BEFD)">
+              Enviar Pedido
+            </button>
+          </form>
+
+          <!-- Success state -->
+          <div id="form-success" class="hidden mt-6 p-8 rounded-2xl text-center" style="background:#f0f9ff">
+            <div class="text-5xl mb-4">✅</div>
+            <h3 class="text-xl font-extrabold text-cerulean mb-2">Pedido Enviado!</h3>
+            <p class="text-gray-500 text-sm">Obrigado pelo seu contacto. Entraremos em contacto consigo em breve.</p>
+          </div>
+
+        </div>
+      </section>
+    </div><!-- /page-booking -->
+
+  </div><!-- /pt-16 -->
+
+
+  <!-- ─── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="text-white py-14 px-4" style="background:linear-gradient(135deg,#019EF3,#00B0FC);">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl">👔</span>
+          <span class="text-xl font-extrabold">Engomadoria Penafiel</span>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed">
+          Serviços profissionais de engomadoria em Penafiel. Qualidade e conveniência ao seu serviço.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-extrabold text-lg mb-5">Páginas</h3>
+        <ul class="space-y-2 text-sm text-white/70">
+          <li><button onclick="showPage('home')"     class="hover:text-white transition-colors">Início</button></li>
+          <li><button onclick="showPage('about')"    class="hover:text-white transition-colors">Sobre Nós</button></li>
+          <li><button onclick="showPage('services')" class="hover:text-white transition-colors">Serviços</button></li>
+          <li><button onclick="showPage('contact')"  class="hover:text-white transition-colors">Contacto</button></li>
+          <li><button onclick="showPage('gallery')"  class="hover:text-white transition-colors">Galeria</button></li>
+          <li><button onclick="showPage('booking')"  class="hover:text-white transition-colors">Reservar</button></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-extrabold text-lg mb-5">Contacto</h3>
+        <ul class="space-y-3 text-sm text-white/70">
+          <li>📞 +351 XXX XXX XXX</li>
+          <li>💬 WhatsApp: +351 XXX XXX XXX</li>
+          <li>📧 contacto@engomadoria.pt</li>
+          <li>📍 Penafiel, Portugal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/20 pt-8 text-center text-xs text-white/50">
+      © 2025 Engomadoria Penafiel. Todos os direitos reservados.
+    </div>
+  </footer>
+
+
+  <!-- ─── Scripts ────────────────────────────────────────────────────────── -->
+  <script>
+    const pages = ['home','about','services','contact','gallery','booking'];
+
+    function showPage(id) {
+      pages.forEach(p => {
+        document.getElementById('page-' + p).classList.remove('active');
+        const btn = document.getElementById('nav-' + p);
+        if (btn) btn.classList.remove('text-cerulean', 'font-bold');
+      });
+      document.getElementById('page-' + id).classList.add('active');
+      const activeBtn = document.getElementById('nav-' + id);
+      if (activeBtn) activeBtn.classList.add('text-cerulean', 'font-bold');
+      window.scrollTo(0, 0);
+    }
+
+    function scrollToPlans() {
+      document.getElementById('plans-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('booking-form').classList.add('hidden');
+      const success = document.getElementById('form-success');
+      success.classList.remove('hidden');
+      success.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Set initial nav active state
+    showPage('home');
+  </script>
+
+</body>
+</html>
