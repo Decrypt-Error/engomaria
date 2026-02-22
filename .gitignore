@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Build
+node_modules/
+src/
+tailwindcss
+
+# Environment
+.env
